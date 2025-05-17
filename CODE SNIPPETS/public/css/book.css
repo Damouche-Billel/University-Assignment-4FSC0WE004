@@ -1,0 +1,188 @@
+/* === Global Reset & Box Model Setup === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Ensure padding/border don't expand element width */
+}
+
+/* === Base Body Styling === */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Smooth, modern font */
+    font-size: 12.5pt;
+    margin: 0;
+    padding: 0;
+    background-color: #1c1c1c; /* Dark theme background */
+    min-width: 400px; /* Prevent layout collapse on small screens */
+}
+
+/* === Section Background === */
+.bg-2 {
+    background-color: #1c1c1c; /* Match body background */
+    color: #f4f4f4; /* Light text for readability */
+    padding: 50px 20px;
+    margin: 0 auto;
+    box-shadow: none;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* === Content Wrapper === */
+.container {
+    width: 80%;
+    max-width: 800px; /* Keep content comfortably centered */
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+/* === Headings === */
+.leading-text {
+    font-size: 30pt;
+    font-weight: 700;
+}
+
+/* Emphasized variant with gold color and soft glow */
+.leading-text.style-2 {
+    color: #d4b24b;
+    text-shadow: 2px 2px 5px rgba(103, 88, 15, 0.5);
+}
+
+/* === Flexbox centering utility === */
+.centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Smaller header used for subtitles or section intros */
+.additional-text.style-2 {
+    color: #d4b24b;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* === Booking Form Layout === */
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between fields */
+}
+
+/* Group labels and inputs together */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* === Labels === */
+.booking-form label {
+    font-size: 1rem;
+    color: #d4b24b; /* Match theme gold */
+    font-weight: bold;
+}
+
+/* === Inputs, Textareas, Dropdowns === */
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0);
+    transition: border-color 0.3s;
+}
+
+/* Highlight fields when focused */
+.booking-form input:focus,
+.booking-form textarea:focus,
+.booking-form select:focus {
+    border-color: #d4b24b;
+    outline: none;
+    box-shadow: 0 0 5px #d4b24b;
+}
+
+/* Allow textarea resizing */
+.booking-form textarea {
+    resize: vertical;
+}
+
+/* === Primary Button Styling === */
+.btn-primary {
+    background-color: #d4b24b;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Lighter background on hover */
+.btn-primary:hover {
+    background-color: #f0d084;
+}
+
+/* === Error Message Styling === */
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    height: 1.2rem; /* Reserve space to prevent layout shift */
+}
+
+/* === Contact Info Styling === */
+.contact-info {
+    padding-top: 20pt;
+    margin-bottom: 20px;
+}
+
+.contact-info h4 {
+    color: white;
+    font-weight: 400;
+    margin: 5px 0;
+}
+
+/* === Social Icons Layout === */
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.social-link img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+/* Slightly larger Twitter icon to fit aspect ratio */
+.social-link img[alt="Twitter Icon"] {
+    width: 70px;
+    height: 55px;
+}
+
+/* === Form Validation Error States === */
+.booking-form input.invalid,
+.booking-form textarea.invalid,
+.booking-form select.invalid {
+    border-color: #ff4d4d;
+    background-color: #fff0f0;
+}
+
+/* === Success Message Styling === */
+.success-message {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 20px;
+    display: none; /* Only show dynamically */
+}

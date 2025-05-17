@@ -1,0 +1,207 @@
+<!-- booking-mockup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form Mockup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .mockup-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .mockup-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .mockup-section {
+            margin-bottom: 40px;
+        }
+        .mockup-image {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .notes {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #5588ff;
+            margin-bottom: 20px;
+        }
+        .flow-diagram {
+            text-align: center;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .flow-step {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 15px;
+            background-color: #5588ff;
+            color: white;
+            border-radius: 5px;
+        }
+        .flow-arrow {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 20px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .database-schema {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-container">
+        <h1>Fennec FC Trial Booking System</h1>
+        <p class="mockup-title">Frontend & Backend Integration Mockup</p>
+
+        <div class="mockup-section">
+            <div class="section-title">User Interface - Booking Form</div>
+            <img class="mockup-image" src="booking-form-ui.png" alt="Booking Form UI">
+            <div class="notes">
+                <p><strong>UI Features:</strong></p>
+                <ul>
+                    <li>Clean, responsive design that matches the club's branding</li>
+                    <li>Form fields with appropriate validation cues</li>
+                    <li>Clear error messages for validation failures</li>
+                    <li>Success message confirmation after submission</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mockup-section">
+            <div class="section-title">Data Flow Architecture</div>
+            <div class="flow-diagram">
+                <div class="flow-step">User Input</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Client Validation</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Server Validation</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Database Storage</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Email Notification</div>
+            </div>
+            <div class="notes">
+                <p><strong>Backend Processing Steps:</strong></p>
+                <ol>
+                    <li>Client-side validation ensures basic data integrity</li>
+                    <li>Form data submitted via AJAX to prevent page reload</li>
+                    <li>Server validates inputs using express-validator</li>
+                    <li>Valid submissions stored in MongoDB</li>
+                    <li>Confirmation email sent to applicant</li>
+                    <li>Response with success/error status returned to client</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="mockup-section">
+            <div class="section-title">Database Schema</div>
+            <div class="database-schema">
+                <pre>
+{
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  age: {
+    type: Number,
+    required: true,
+    min: 16
+  },
+  position: {
+    type: String,
+    required: true,
+    enum: ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']
+  },
+  experience: {
+    type: String,
+    required: true,
+    minlength: 20
+  },
+  availability: {
+    type: String,
+    required: true
+  },
+  submissionDate: {
+    type: Date,
+    default: Date.now
+  },
+  status: {
+    type: String,
+    enum: ['Pending', 'Approved', 'Rejected', 'Completed'],
+    default: 'Pending'
+  }
+}
+                </pre>
+            </div>
+        </div>
+
+        <div class="mockup-section">
+            <div class="section-title">Email Notification Template</div>
+            <img class="mockup-image" src="email-template.png" alt="Email Template">
+            <div class="notes">
+                <p>Transactional email with:</p>
+                <ul>
+                    <li>Club branding for recognition</li>
+                    <li>Confirmation of trial booking submission</li>
+                    <li>Summary of applicant details</li>
+                    <li>Next steps information</li>
+                    <li>Contact details for enquiries</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mockup-section">
+            <div class="section-title">Technology Stack</div>
+            <ul>
+                <li><strong>Frontend:</strong> HTML5, CSS3, Vanilla JavaScript</li>
+                <li><strong>Backend:</strong> Node.js with Express</li>
+                <li><strong>Database:</strong> MongoDB with Mongoose ODM</li>
+                <li><strong>Form Validation:</strong> Client-side JS, Express Validator</li>
+                <li><strong>Email Service:</strong> Nodemailer with email provider (e.g., Gmail)</li>
+                <li><strong>Deployment:</strong> Potential deployment to Heroku or similar platform</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
