@@ -45,7 +45,7 @@ app.use(fileUpload({
 }));
 
 //Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 //Session configuration
 app.use(session({
@@ -65,10 +65,10 @@ app.use(session({
 }));
 
 //Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/articles', articleRoutes);
 app.use('/api/merchandise', merchandiseRoutes);
-app.use('/api/fixtures', fixtureRoutes); //<-- Add this line
+app.use('/api/fixtures', fixtureRoutes);
 app.use('/api', apiRoutes);
 
 //Serve the frontend for any other routes

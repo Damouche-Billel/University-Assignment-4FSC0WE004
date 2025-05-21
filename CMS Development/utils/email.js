@@ -1,48 +1,40 @@
 const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {
-  let transporter;
-
-  //Create a transporter
-  if (process.env.NODE_ENV === 'production') {
-    //Production transporter
-    transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
-  } else {
-    //Development transporter (using Ethereal for testing)
+  try {
+    // Create test account for development
     const testAccount = await nodemailer.createTestAccount();
     
-    transporter = nodemailer.createTransport({
+    // Create transporter with Ethereal credentials
+    const transporter = nodemailer.createTransport({
       host: 'smtp.ethereal.email',
       port: 587,
-      secure: false, //true for 465, false for other ports
+      secure: false,
       auth: {
         user: testAccount.user,
         pass: testAccount.pass
       }
     });
-  }
 
-  //Define email options
-  const mailOptions = {
-    from: process.env.EMAIL_FROM || 'admin@fennecfc.com',
-    to: options.email,
-    subject: options.subject,
-    html: options.message
-  };
+    // Email options
+    const message = {
+      from: '"Fennec FC" <noreply@fennecfc.com>',
+      to: options.email,
+      subject: options.subject,
+      html: options.message
+    };
 
-  //Send email
-  const info = await transporter.sendMail(mailOptions);
+    // Send email
+    const info = await transporter.sendMail(message);
 
-  //Log URL for development testing
-  if (process.env.NODE_ENV !== 'production') {
+    // Log the test email URL - THIS IS WHERE YOU CAN VIEW THE EMAIL
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    
+    return info;
+
+  } catch (error) {
+    console.error('Email send error:', error);
+    throw new Error('Email could not be sent');
   }
 };
 
