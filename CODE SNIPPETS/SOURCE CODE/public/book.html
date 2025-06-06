@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta setup for responsiveness and character encoding -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Page title shown in browser tab -->
+    <title>Book a Trial | Fennec FC</title>
+
+    <!-- Link to external stylesheet for styling this page -->
+    <link rel="stylesheet" href="css/book.css">
+</head>
+
+<body>
+    <!-- Main booking section with themed background -->
+    <section class="bg-2">
+        <div class="container">
+            <!-- Header for the form section -->
+            <span class="leading-text centre style-2">Book a Trial</span>
+
+            <!-- Subtext explaining the purpose of the form -->
+            <p class="additional-text style-2">
+                We're excited to see new talent! If you're ready to showcase your skills and join Fennec FC,
+                fill out the form below to register your interest and book a trial.
+            </p>
+
+            <!-- Booking form with client-side validation -->
+            <form id="bookingForm" class="booking-form">
+                
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+
+                <!-- Age Field (min age 16) -->
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" placeholder="Enter your age" min="16">
+                    <span class="error-message" id="ageError"></span>
+                </div>
+
+                <!-- Preferred Playing Position Dropdown -->
+                <div class="form-group">
+                    <label for="position">Preferred Position:</label>
+                    <select id="position" name="position">
+                        <option value="">Select your position</option>
+                        <option value="Goalkeeper">Goalkeeper</option>
+                        <option value="Defender">Defender</option>
+                        <option value="Midfielder">Midfielder</option>
+                        <option value="Forward">Forward</option>
+                    </select>
+                    <span class="error-message" id="positionError"></span>
+                </div>
+
+                <!-- Previous Experience Text Area -->
+                <div class="form-group">
+                    <label for="experience">Previous Experience:</label>
+                    <textarea id="experience" name="experience" rows="4" placeholder="Describe any relevant experience or teams you have played for"></textarea>
+                    <span class="error-message" id="experienceError"></span>
+                </div>
+
+                <!-- Availability for Trial Field -->
+                <div class="form-group">
+                    <label for="availability">Availability for Trial:</label>
+                    <input type="text" id="availability" name="availability" placeholder="Provide your preferred dates for the trial">
+                    <span class="error-message" id="availabilityError"></span>
+                </div>
+
+                <!-- Submission Button -->
+                <button type="submit" class="btn-primary btn-inline">Register Interest</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- JavaScript file to handle form validation and submission -->
+    <script src="js/book.js"></script>
+</body>
+</html>
